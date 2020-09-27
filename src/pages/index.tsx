@@ -2,6 +2,7 @@ import Prismic from 'prismic-javascript'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import React from 'react'
 import { GetStaticProps } from 'next'
+import serializeHyperlink from '../utils/serializeHyperlink'
 
 interface Props {
   docData: {
@@ -12,7 +13,10 @@ interface Props {
 const Index: React.FC<Props> = ({ docData }: Props) => {
   return (
     <div>
-      <RichText render={docData.description} />
+      <RichText
+        render={docData.description}
+        serializeHyperlink={serializeHyperlink as any}
+      />
     </div>
   )
 }

@@ -2,12 +2,12 @@ import fs from 'fs'
 import { getIntrospectionQuery } from 'graphql'
 import fetch from 'isomorphic-fetch'
 import path from 'path'
-import prismic from 'prismic-javascript'
+import Prismic from 'prismic-javascript'
 
 const prismicRepo = process.env.PRISMIC_REPO;
 
 (async function() {
-  const api = await prismic.api(`https://${prismicRepo}.prismic.io/api/v2`)
+  const api = await Prismic.api(`https://${prismicRepo}.prismic.io/api/v2`)
   const res = await fetch(
     `https://${prismicRepo}.prismic.io/graphql?query=${getIntrospectionQuery()}`,
     {
